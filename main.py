@@ -15,7 +15,7 @@ maxProductsResponseCount = 10
 def job():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_SHIM', None)
-    driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path='/app/.chromedriver/bin/chromedriver', chrome_options=chrome_options)
 
     # driver = webdriver.Chrome('chromedriver')
 
