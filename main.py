@@ -16,11 +16,15 @@ maxProductsResponseCount = 10
 def job():
     options = Options()
 
-    options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+    # options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
 
     # driver = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
 
-    driver = webdriver.Chrome('chromedriver')
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_SHIM', None)
+    driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=chrome_options)
+
+    # driver = webdriver.Chrome('chromedriver')
 
     telegram_send.send(messages=["Новая выборка за *" + date.today().strftime("%d %B, %Y") + "*"],
                        parse_mode='markdown')
