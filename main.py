@@ -6,7 +6,7 @@ import locale
 from datetime import date
 import schedule
 
-locale.setlocale(locale.LC_TIME, "ru_RU")
+locale.setlocale(locale.LC_TIME, "ru_RU.UTF-8")
 
 searchUrlPrefix = 'https://aliexpress.ru/wholesale?SortType=total_tranpro_desc&maxPrice=200&SearchText='
 categoriesTitles = ['Серьги женские', 'Подвески женские', 'Браслет женский']
