@@ -1,9 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import time
 import telegram_send
 from datetime import date
 import schedule
+import os
 
 searchUrlPrefix = 'https://aliexpress.ru/wholesale?SortType=total_tranpro_desc&maxPrice=200&SearchText='
 categoriesTitles = ['Серьги женские', 'Подвески женские', 'Браслет женский']
@@ -12,7 +14,13 @@ maxProductsResponseCount = 10
 
 
 def job():
-    driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+    options = Options()
+
+    options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+
+    driver = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
+
+    # driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 
     telegram_send.send(messages=["Новая выборка за *" + date.today().strftime("%d %B, %Y") + "*"],
                        parse_mode='markdown')
