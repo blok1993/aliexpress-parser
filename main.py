@@ -18,9 +18,9 @@ def job():
 
     options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
 
-    driver = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
+    # driver = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
 
-    # driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+    driver = webdriver.Chrome('chromedriver')
 
     telegram_send.send(messages=["Новая выборка за *" + date.today().strftime("%d %B, %Y") + "*"],
                        parse_mode='markdown')
