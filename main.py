@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
 import time
 import telegram_send
 from datetime import date
@@ -14,12 +13,6 @@ maxProductsResponseCount = 10
 
 
 def job():
-    options = Options()
-
-    # options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
-
-    # driver = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
-
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_SHIM', None)
     driver = webdriver.Chrome(executable_path="chromedriver", chrome_options=chrome_options)
